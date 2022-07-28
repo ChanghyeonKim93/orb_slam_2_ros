@@ -57,7 +57,7 @@ void Node::Init () {
   // Enable publishing camera's pose as PoseStamped message
   if (publish_pose_param_) {
     pose_publisher_ = node_handle_.advertise<geometry_msgs::PoseStamped> (name_of_node_+"/pose", 1);
-    pub_trajectory_gt_ = node_handle_.advertise<nav_msgs::Path>("/orbslam2/groundtruth_path",1);
+    pub_trajectory_gt_ = node_handle_.advertise<nav_msgs::Path>("/orbslam2/path",1);
 
   }
 
@@ -182,7 +182,7 @@ void Node::PublishPositionAsPoseStamped (cv::Mat position) {
   // Path.
   geometry_msgs::PoseStamped p;
   msg_trajectory_gt_.header.frame_id = "map";
-  msg_trajectory_gt_.header.stamp = ros::Time::no
+  msg_trajectory_gt_.header.stamp = ros::Time::now();
   msg_trajectory_gt_.poses.push_back(pose_msg);
   pub_trajectory_gt_.publish(msg_trajectory_gt_);
 }
@@ -218,9 +218,12 @@ tf2::Transform Node::TransformFromMat (cv::Mat position_mat) {
   tf2::Vector3 tf_camera_translation (translation.at<float> (0), translation.at<float> (1), translation.at<float> (2));
 
   //Coordinate transformation matrix from orb coordinate system to ros coordinate system
-  const tf2::Matrix3x3 tf_orb_to_ros (0, 0, 1,
-                                    -1, 0, 0,
-                                     0,-1, 0);
+  // const tf2::Matrix3x3 tf_orb_to_ros (0, 0, 1,
+  //                                   -1, 0, 0,
+  //                                    0,-1, 0);
+  const tf2::Matrix3x3 tf_orb_to_ros (1, 0, 0,
+                                      0, 1, 0,
+                                      0, 0, 1);
 
   //Transform from orb coordinate system to ros coordinate system on camera coordinates
   tf_camera_rotation = tf_orb_to_ros*tf_camera_rotation;
