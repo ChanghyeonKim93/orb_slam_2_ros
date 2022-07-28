@@ -27,7 +27,7 @@
 
        <!-- Camera parameters -->
        <!-- Camera frames per second -->
-       <param name="camera_fps" type="int" value="30" />
+       <param name="camera_fps" type="int" value="10" />
        <!-- Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale) -->
        <param name="camera_rgb_encoding" type="bool" value="true" />
 

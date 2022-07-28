@@ -57,6 +57,8 @@ void Node::Init () {
   // Enable publishing camera's pose as PoseStamped message
   if (publish_pose_param_) {
     pose_publisher_ = node_handle_.advertise<geometry_msgs::PoseStamped> (name_of_node_+"/pose", 1);
+    pub_trajectory_gt_ = node_handle_.advertise<nav_msgs::Path>("/orbslam2/groundtruth_path",1);
+
   }
 
   status_gba_publisher_ = node_handle_.advertise<std_msgs::Bool> (name_of_node_+"/gba_running", 1);
@@ -176,6 +178,13 @@ void Node::PublishPositionAsPoseStamped (cv::Mat position) {
   geometry_msgs::PoseStamped pose_msg;
   tf2::toMsg(tf_position_target_stamped, pose_msg);
   pose_publisher_.publish(pose_msg);
+
+  // Path.
+  geometry_msgs::PoseStamped p;
+  msg_trajectory_gt_.header.frame_id = "map";
+  msg_trajectory_gt_.header.stamp = ros::Time::no
+  msg_trajectory_gt_.poses.push_back(pose_msg);
+  pub_trajectory_gt_.publish(msg_trajectory_gt_);
 }
 
 void Node::PublishGBAStatus (bool gba_status) {

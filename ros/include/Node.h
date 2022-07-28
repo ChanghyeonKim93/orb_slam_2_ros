@@ -49,7 +49,8 @@
 
 #include "System.h"
 
-
+// CHK
+#include <nav_msgs/Path.h>
 
 class Node
 {
@@ -88,6 +89,10 @@ class Node
     image_transport::Publisher rendered_image_publisher_;
     ros::Publisher map_points_publisher_;
     ros::Publisher pose_publisher_;
+
+    ros::Publisher pub_trajectory_gt_;
+    nav_msgs::Path msg_trajectory_gt_;
+    
     ros::Publisher status_gba_publisher_;
 
     ros::ServiceServer service_server_;
