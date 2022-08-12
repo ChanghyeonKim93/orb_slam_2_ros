@@ -177,6 +177,9 @@ void Node::PublishPositionAsPoseStamped (cv::Mat position) {
   tf_position_target_stamped = tf2::Stamped<tf2::Transform>(tf_position_target, current_frame_time_, map_frame_id_param_);
   geometry_msgs::PoseStamped pose_msg;
   tf2::toMsg(tf_position_target_stamped, pose_msg);
+  pose_msg.pose.position.x *= 17.0f;
+  pose_msg.pose.position.y *= 17.0f;
+  pose_msg.pose.position.z *= 17.0f;
   pose_publisher_.publish(pose_msg);
 
   // Path.
