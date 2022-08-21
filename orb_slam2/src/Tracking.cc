@@ -436,7 +436,7 @@ void Tracking::Track()
 
             // Check if we need to insert a new keyframe
             if(NeedNewKeyFrame())
-                CreateNewKeyFrame();
+                CreateNewKeyFrame(); 
 
             // We allow points with high innovation (considererd outliers by the Huber Function)
             // pass to the new keyframe, so that bundle adjustment will finally decide
@@ -999,13 +999,12 @@ bool Tracking::NeedNewKeyFrame()
     bool bNeedToInsertClose = (nTrackedClose<100) && (nNonTrackedClose>70);
 
     // Thresholds
-    // float thRefRatio = 0.75f;
-    float thRefRatio = 0.95f; // CHK
+    float thRefRatio = 0.75f;
     if(nKFs<2)
         thRefRatio = 0.4f;
 
     if(mSensor==System::MONOCULAR)
-        thRefRatio = 0.9f;
+        thRefRatio = 0.95f;
 
     // Condition 1a: More than "MaxFrames" have passed from last keyframe insertion
     const bool c1a = mCurrentFrame.mnId>=mnLastKeyFrameId+mMaxFrames;

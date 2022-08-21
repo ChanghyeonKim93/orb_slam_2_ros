@@ -65,9 +65,9 @@ void MonoNode::ImageCallback (const sensor_msgs::ImageConstPtr& msg) {
     tf_position_target_stamped = tf2::Stamped<tf2::Transform>(tf_position_target, ros::Time::now(), "map");
     geometry_msgs::PoseStamped pose_msg;
     tf2::toMsg(tf_position_target_stamped, pose_msg);
-    pose_msg.pose.position.x *= 5.0f;
-    pose_msg.pose.position.y *= 5.0f;
-    pose_msg.pose.position.z *= 5.0f;
+    pose_msg.pose.position.x *= 17.0f;
+    pose_msg.pose.position.y *= 17.0f;
+    pose_msg.pose.position.z *= 17.0f;
     pub_pose_.publish(pose_msg);
 
     // publish image.

@@ -20,10 +20,10 @@
 
        <!-- ORB parameters -->
        <param name="/ORBextractor/nFeatures" type="int" value="2000" />
-       <param name="/ORBextractor/scaleFactor" type="double" value="1.2" />
+       <param name="/ORBextractor/scaleFactor" type="double" value="1.1" />
        <param name="/ORBextractor/nLevels" type="int" value="8" />
-       <param name="/ORBextractor/iniThFAST" type="int" value="20" />
-       <param name="/ORBextractor/minThFAST" type="int" value="7" />
+       <param name="/ORBextractor/iniThFAST" type="int" value="30" />
+       <param name="/ORBextractor/minThFAST" type="int" value="10" />
 
        <!-- Camera parameters -->
        <!-- Camera frames per second -->
