@@ -50,4 +50,13 @@ void MonoNode::ImageCallback (const sensor_msgs::ImageConstPtr& msg) {
   // orb_slam_->
 
   Update ();
+  cv::Mat position = orb_slam_->GetCurrentPosition();
+
+  if (!position.empty()) {
+
+    // Get transform from map to camera frame
+    tf2::Transform tf_transform = TransformFromMat(position);
+    std::cout << " fpefiefpeofpeof \n";
+  }
+    
 }

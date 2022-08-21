@@ -59,6 +59,10 @@ class Node
     ~Node ();
     void Init ();
 
+
+    tf2::Transform TransformFromMat (cv::Mat position_mat);
+    tf2::Transform TransformToTarget (tf2::Transform tf_in, std::string frame_in, std::string frame_target);
+    sensor_msgs::PointCloud2 MapPointsToPointCloud (std::vector<ORB_SLAM2::MapPoint*> map_points);
   protected:
     void Update ();
     ORB_SLAM2::System* orb_slam_;
@@ -79,10 +83,6 @@ class Node
     // initialization Transform listener
     boost::shared_ptr<tf2_ros::Buffer> tfBuffer;
     boost::shared_ptr<tf2_ros::TransformListener> tfListener;
-
-    tf2::Transform TransformFromMat (cv::Mat position_mat);
-    tf2::Transform TransformToTarget (tf2::Transform tf_in, std::string frame_in, std::string frame_target);
-    sensor_msgs::PointCloud2 MapPointsToPointCloud (std::vector<ORB_SLAM2::MapPoint*> map_points);
 
     dynamic_reconfigure::Server<orb_slam2_ros::dynamic_reconfigureConfig> dynamic_param_server_;
 
