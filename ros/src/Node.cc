@@ -172,7 +172,7 @@ void Node::PublishPositionAsPoseStamped (cv::Mat position) {
   // Make transform from camera frame to target frame
   tf2::Transform tf_position_target = TransformToTarget(tf_position, camera_frame_id_param_, target_frame_id_param_);
   
-  // Make message
+  // CHK, Make message
   tf2::Stamped<tf2::Transform> tf_position_target_stamped;
   tf_position_target_stamped = tf2::Stamped<tf2::Transform>(tf_position_target, current_frame_time_, map_frame_id_param_);
   geometry_msgs::PoseStamped pose_msg;

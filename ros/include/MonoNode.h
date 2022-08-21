@@ -46,6 +46,8 @@ class MonoNode : public Node
 
   private:
     image_transport::Subscriber image_subscriber;
+    image_transport::Publisher pub_image_; // CHK
+    ros::Publisher pub_pose_; // CHK
 };
 
 #endif //ORBSLAM2_ROS_MONONODE_H_
