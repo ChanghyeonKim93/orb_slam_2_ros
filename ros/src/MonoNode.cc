@@ -45,8 +45,9 @@ void MonoNode::ImageCallback (const sensor_msgs::ImageConstPtr& msg) {
   }
 
   current_frame_time_ = msg->header.stamp;
-
+  ROS_INFO_STREAM("ORB SLAM gets a new image!");
   orb_slam_->TrackMonocular(cv_in_ptr->image,cv_in_ptr->header.stamp.toSec());
+  // orb_slam_->
 
   Update ();
 }

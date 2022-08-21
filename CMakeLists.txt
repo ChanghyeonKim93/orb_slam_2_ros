@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5.1)
 project(orb_slam2_ros)
 
 IF(NOT CMAKE_BUILD_TYPE)
@@ -7,27 +7,27 @@ ENDIF()
 
 # Check for c++11 support
 INCLUDE(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-IF(COMPILER_SUPPORTS_CXX11)
-  set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+CHECK_CXX_COMPILER_FLAG("-std=c++17" COMPILER_SUPPORTS_CXX17)
+IF(COMPILER_SUPPORTS_CXX17)
+  set(CMAKE_CXX_FLAGS "-std=c++17 ${CMAKE_CXX_FLAGS}")
 ELSE()
-  MESSAGE(ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+  MESSAGE(ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++17 support. Please use a different C++ compiler.")
 ENDIF()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/orb_slam2/cmake_modules)
 
 find_package (catkin REQUIRED COMPONENTS
-roscpp
-rospy
-std_msgs
-cv_bridge
-image_transport
-tf
-tf2_geometry_msgs
-tf2_ros
-sensor_msgs
-dynamic_reconfigure
-message_generation
+  roscpp
+  rospy
+  std_msgs
+  cv_bridge
+  image_transport
+  tf
+  tf2_geometry_msgs
+  tf2_ros
+  sensor_msgs
+  dynamic_reconfigure
+  message_generation
 )
 
 find_package(OpenCV 4.0 QUIET)
