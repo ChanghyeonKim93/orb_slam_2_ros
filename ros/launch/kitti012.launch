@@ -16,18 +16,18 @@
 
        <param name="pointcloud_frame_id" type="string" value="map" />
        <param name="camera_frame_id" type="string" value="camera_link" />
-       <param name="min_num_kf_in_map" type="int" value="7" />
+       <param name="min_num_kf_in_map" type="int" value="5" />
 
        <!-- ORB parameters -->
-       <param name="/ORBextractor/nFeatures" type="int" value="3000" />
+       <param name="/ORBextractor/nFeatures" type="int" value="2000" />
        <param name="/ORBextractor/scaleFactor" type="double" value="1.2" />
        <param name="/ORBextractor/nLevels" type="int" value="8" />
-       <param name="/ORBextractor/iniThFAST" type="int" value="10" />
+       <param name="/ORBextractor/iniThFAST" type="int" value="20" />
        <param name="/ORBextractor/minThFAST" type="int" value="7" />
 
        <!-- Camera parameters -->
        <!-- Camera frames per second -->
-       <param name="camera_fps" type="int" value="10" />
+       <param name="camera_fps" type="int" value="20" />
        <!-- Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale) -->
        <param name="camera_rgb_encoding" type="bool" value="true" />
 
